@@ -1,0 +1,193 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+.App {
+  background-color: #2a2a2a;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  padding: 30px;
+  width: 90%;
+  max-width: 800px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.App-header h1 {
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+}
+
+.lobby, .game-room {
+  background-color: #3a3a3a;
+  padding: 25px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+h2, h3, h4 {
+  color: #00ccff;
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: auto;
+  flex-grow: 1;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #00ffff;
+  border-radius: 5px;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  font-size: 1em;
+  outline: none;
+  transition: border-color 0.3s ease;
+  max-width: 150px; /* 추가: 최대 너비 제한 */
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: #00ff00;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+}
+
+button {
+  background-color: #00aaff;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 5px;
+  flex-shrink: 0;
+}
+
+button:hover {
+  background-color: #0077cc;
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.room-creation, .room-join, .bid-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-list, .score-list, .game-log ul, .player-status ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.player-list li, .score-list li, .game-log li, .player-status li {
+  background-color: #4a4a4a;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  text-align: left;
+  border-left: 5px solid #00ffff;
+}
+
+.error-message {
+  color: #ff4444;
+  background-color: #440000;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #ff0000;
+}
+
+.start-game-button {
+  background-color: #00cc66;
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 1.2em;
+}
+
+.start-game-button:hover {
+  background-color: #009944;
+}
+
+.game-board {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.current-auction {
+  background-color: #4a4a4a;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+}
+
+.auction-number {
+  font-size: 2em;
+  font-weight: bold;
+  color: #ffcc00;
+  text-shadow: 0 0 8px #ffcc00;
+}
+
+.game-log, .player-status {
+  background-color: #4a4a4a;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #00ccff;
+}
+
+.game-log ul, .player-status ul {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #555;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.game-over {
+  background-color: #4a4a4a;
+  padding: 30px;
+  border-radius: 10px;
+  border: 3px solid #ff0000;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+}
+
+.game-over h3 {
+  color: #ff4444;
+  font-size: 2em;
+}
+
+.game-over h4 {
+  color: #ff8800;
+}
+
+.score-list li {
+  border-left-color: #ff8800;
+}
