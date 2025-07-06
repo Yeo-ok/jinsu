@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import './App.css'; // CSS 파일을 import
 
-const SERVER_URL = 'http://localhost:3001'; // 서버 주소
+const SERVER_URL = 'https://shiny-invention-wwpr5qvggphvvr9-3001.app.github.dev/'; // 서버 주소
 
 function App() {
   const [socket, setSocket] = useState(null);
@@ -120,6 +120,14 @@ function App() {
     }
   };
 
+  const handleEndBid = () => {
+    if (socket && currentRoomId ) {
+      socket.emit('endBid', { roomId: currentRoomId });
+    } else {
+      setError('서버오류.');
+    }
+  };
+
   const isHost = socket && socket.id === hostId;
   const myPlayerData = gameState?.playerData[socket?.id];
 
@@ -210,6 +218,9 @@ function App() {
                         />
                         <button onClick={handlePlaceBid} disabled={gameState.currentAuction.bids[socket.id]}>
                           입찰하기
+                        </button>
+                        <button onClick={handleEndBid} disabled={gameState.currentAuction.bids[socket.id]}>
+                          다음 경매
                         </button>
                       </div>
                       <p>입찰 현황: {Object.keys(gameState.currentAuction.bids).length} / {players.length} 명 입찰</p>

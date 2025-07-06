@@ -5,13 +5,21 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-app.use(cors());
+const CLIENT_ORIGIN = 'https://shiny-invention-wwpr5qvggphvvr9-3000.app.github.dev';
+
+app.use(cors({
+  origin: CLIENT_ORIGIN,
+  methods: ["GET", "POST"],
+  credentials: true
+}));
 
 const server = http.createServer(app);
+
 const io = new Server(server, {
   cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
+    origin: CLIENT_ORIGIN,
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
 
@@ -244,9 +252,10 @@ io.on('connection', (socket) => {
 
     io.to(roomId).emit('gameStateUpdate', room.gameState);
 
-    if (currentAuction.bidCount === room.players.length) {
-      resolveAuction(roomId);
-    }
+  });
+
+  socket.on('endBid', ({ roomId }) => {
+        resolveAuction(roomId);
   });
 
   socket.on('disconnect', () => {
